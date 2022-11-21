@@ -1,0 +1,22 @@
+{
+  "name": "project-internshipgroup25",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mani03011998/project-internshipGroup25.git"
+  },
+  "author": "Mani Ratna Monu, Chanda Kumari , Jivan Toshinwal , Preeti Bissoyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mani03011998/project-internshipGroup25/issues"
+  },
+  "homepage": "https://github.com/Mani03011998/project-internshipGroup25#readme",
+  "dependencies": {
+    "mongoose": "^6.7.2"
+  }
+}
