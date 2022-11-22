@@ -9,7 +9,7 @@ const { globalErrorHandler } = require("./controller/errorController"); // JIVAN
 
 app.use(express.json())
 
-
+//   .connect("mongodb://0.0.0.0:27017/group25Database", {
 mongoose.connect("mongodb+srv://chanda:QYho3EZNKLny4znA@cluster0.gkrjc46.mongodb.net/group25Database",{
    useNewUrlParser :true
 })

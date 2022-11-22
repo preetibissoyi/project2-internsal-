@@ -1,4 +1,4 @@
-const collageModel = require("../model/CollegeModel");
+const collegeModel = require("../model/CollegeModel");
 const InternModel = require("../model/InternModel");
 
 const {
@@ -11,7 +11,7 @@ const {
 // API MADE BY JIVAN
 const CreateCollege = async function (req, res, next) {
   try {
-    const collage = await collageModel.create(req.body);
+    const collage = await collegeModel.create(req.body);
     res.status(201).json({
       status: true,
       data: {
@@ -41,9 +41,11 @@ const collegeDetails = async function (req, res) {
     if (!isValidShortName(collegeName))
       return res.status(400).send({ status: false, msg: "invalid collegName" });
 
-    let college = await CollegeModel.findOne({
-      name: collegeName.toLowerCase(),
-    }).select({ name: 1, fullName: 1, logoLink: 1 });
+    let college = await collegeModel
+      .findOne({
+        name: collegeName.toLowerCase(),
+      })
+      .select({ name: 1, fullName: 1, logoLink: 1 });
     if (!college)
       return res.status(400).send({ status: false, msg: "college not found" });
     let internName = await InternModel.find({ collegeId: college._id }).select({

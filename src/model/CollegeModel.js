@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const collageSchema = mongoose.Schema(
+const collegeSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -26,4 +26,4 @@ const collageSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Collage", collageSchema);
+module.exports = mongoose.model("College", collegeSchema);
