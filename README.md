@@ -37,6 +37,7 @@
 - The response structure should look like [this](#college-details)
 
 
+
 ## Testing 
 - To test these apis create a new collection in Postman named Project 2 Internship
 - Each api should have a new request in this collection
