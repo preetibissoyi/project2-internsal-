@@ -37,7 +37,7 @@ const mongoose = require('mongoose');
         }
     }
     const isValidMobile=function(mobile){
-        if(/[6789]{1}[0-9]{9}/.test(mobile)){
+        if(/^\d{0,3}[\- ]?[ ]*[\(]?\d{3}[\)]?[\- ]?[ ]*\d{3}[\- ]?[ ]*\d{4}$/.test(mobile)){
             return true
         }
     }
