@@ -21,7 +21,7 @@ const mongoose = require('mongoose');
     }
     
     const isValidName=function(name){
-        if(/^[a-zA-Z ]*$/i.test(name)){ 
+        if(/^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$/i.test(name)){ 
             return true
         }
     }
