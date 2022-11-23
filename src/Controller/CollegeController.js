@@ -7,7 +7,6 @@ const {
   isValidFullName,
 } = require("../validator/validator");
 
-
 // API MADE BY JIVAN
 const CreateCollege = async function (req, res, next) {
   try {
@@ -15,7 +14,9 @@ const CreateCollege = async function (req, res, next) {
     res.status(201).json({
       status: true,
       data: {
-        collage,
+        logoLink: collage.logoLink,
+        fullName: collage.fullName,
+        name: collage.name,
       },
     });
   } catch (error) {
@@ -23,7 +24,6 @@ const CreateCollege = async function (req, res, next) {
   }
 };
 // JIVAN
-
 
 //****************************************************************************************/
 const collegeDetails = async function (req, res) {
@@ -55,12 +55,10 @@ const collegeDetails = async function (req, res) {
       _id: 1,
     });
     if (internName.length === 0)
-      return res
-        .status(404)
-        .send({
-          status: false,
-          message: "there is no students is applied for internship",
-        });
+      return res.status(404).send({
+        status: false,
+        message: "there is no students is applied for internship",
+      });
     let allInterns = {
       name: college.name,
       fullName: college.fullName,
