@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
 const isValidShortName = function (name) {
-  if (/^[a-z]{2,10}/i.test(name)) {
+  if (/^[a-z]{2,8}$/i.test(name)) {
     return true;
   }
 };
 
 const isValidFullName = function (fullname) {
-  if (/^[a-zA-Z]+ [a-zA-Z]+$/i.test(fullname)) {
+  if (/^[a-z/\s/A-Z]{3,100}$/i.test(fullname)) {
     return true;
   }
 };
@@ -42,7 +42,7 @@ const isValidEmail = function (mail) {
 };
 const isValidMobile = function (mobile) {
   if (
-    /^\d{0,3}[\- ]?[ ]*[\(]?\d{3}[\)]?[\- ]?[ ]*\d{3}[\- ]?[ ]*\d{4}$/.test(
+    /^[6-9]\d{9}$/.test(
       mobile
     )
   ) {

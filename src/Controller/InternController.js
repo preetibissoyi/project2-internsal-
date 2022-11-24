@@ -32,7 +32,7 @@ let CreateIntern = async function (req, res) {
        if (!isValidId(collegeId)) return res.status(400).send({ status: false, msg: "invalid  College Id" });
        const allInternsData = { name, email, mobile,  collegeId}
 
-       const intern = await InternModel.create(allInternsData)
+       const intern = await InternModel.create(allInternsData) 
 
        return res.status(201).send({status:true,data: intern })
         

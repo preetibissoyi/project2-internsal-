@@ -1,29 +1,37 @@
+
 const collegeModel = require("../model/CollegeModel");
 const InternModel = require("../model/InternModel");
+const { isValidFullName, isValidLink, isValidShortName } = require("../validator/validator");
 
-const {
-  isValidShortName,
-  isValidLink,
-  isValidFullName,
-} = require("../validator/validator");
 
-// API MADE BY JIVAN
-const CreateCollege = async function (req, res, next) {
-  try {
-    const collage = await collegeModel.create(req.body);
-    res.status(201).json({
-      status: true,
-      data: {
-        logoLink: collage.logoLink,
-        fullName: collage.fullName,
-        name: collage.name,
-      },
-    });
-  } catch (error) {
-    return next(error);
+
+
+ const CreateCollege = async function(req, res){
+  try{
+let data = req.body
+const{name, fullName, logoLink} = data
+
+if(Object.keys(req.body).length==0) return res.status(400).send({status: false , msg: "body is empty"})
+if(!name) return res.status(400).send({status: true, msg: "name is mandatory"});
+if(!isValidShortName(name)) return res.status(400).send({status: false, msg: "invalid College name"});
+
+let DuplicateName = await collegeModel.findOne({name:data.name});
+if(DuplicateName) return res.status(400).send({status: false, msg: "name is already exist"});
+
+
+if(!fullName)  return res.status(400).send({status: false, msg: " full name is mandatory"});
+if(!isValidFullName(fullName)) return res.status(400).send({status: false,msg: "invalid college"});
+
+if(!logoLink) return res.status(400).send({status: false, msg: "logoLink is mandatory"});
+if(!isValidLink(logoLink)) return res.status(400).send({status: false, msg:" invalid logoLink"});
+
+let savedData = await collegeModel.create(data);
+return res.status(201).send({status: true, msg: "College Created",data: savedData})
   }
-};
-// JIVAN
+  catch(error){
+    return res.status(500).send({status: false, messag: error.message})
+  }
+ }
 
 //****************************************************************************************/
 const collegeDetails = async function (req, res) {
@@ -38,7 +46,7 @@ const collegeDetails = async function (req, res) {
       return res
         .status(400)
         .send({ status: false, msg: "please provide college name" });
-    if (!isValidShortName(collegeName))
+    if (!isValidFullName(collegeName))
       return res.status(400).send({ status: false, msg: "invalid collegName" });
 
     let college = await collegeModel
