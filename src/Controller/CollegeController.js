@@ -12,7 +12,7 @@ let data = req.body
 const{name, fullName, logoLink} = data
 
 if(Object.keys(req.body).length==0) return res.status(400).send({status: false , msg: "body is empty"})
-if(!name) return res.status(400).send({status: true, msg: "name is mandatory"});
+if(!name) return res.status(400).send({status: false, msg: "name is mandatory"});
 if(!isValidShortName(name)) return res.status(400).send({status: false, msg: "invalid College name"});
 
 let DuplicateName = await collegeModel.findOne({name:data.name});
@@ -55,7 +55,7 @@ const collegeDetails = async function (req, res) {
       })
       .select({ name: 1, fullName: 1, logoLink: 1 });
     if (!college)
-      return res.status(400).send({ status: false, msg: "college not found" });
+      return res.status(404).send({ status: false, msg: "college not found" });
     let internName = await InternModel.find({ collegeId: college._id }).select({
       name: 1,
       email: 1,
