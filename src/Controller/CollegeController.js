@@ -64,9 +64,7 @@ const collegeDetails = async function (req, res) {
     });
     if (internName.length === 0)
       return res.status(404).send({
-        status: false,
-        message: "there is no students is applied for internship",
-      });
+        status: false,message: "there is no students is applied for internship  from this college", College:college.fullName,});
     let allInterns = {
       name: college.name,
       fullName: college.fullName,
