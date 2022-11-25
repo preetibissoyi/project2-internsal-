@@ -14,6 +14,6 @@ mongoose.connect("mongodb+srv://chanda:QYho3EZNKLny4znA@cluster0.gkrjc46.mongodb
 .catch((err)=>console.log(err))
 
 app.use('/',route)
-app.listen(3000 , function(){
-    console.log("Server is running on PORT" + " " + 3000)
+app.listen(3001 , function(){
+    console.log("Server is running on PORT" + " " + 3001)
 })
