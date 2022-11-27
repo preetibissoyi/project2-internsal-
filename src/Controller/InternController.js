@@ -5,6 +5,7 @@ const { isValidName, isValidEmail, isValidMobile, isValidId } = require('../vali
 
 
 let CreateIntern = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
     try {
         let data = req.body;
         const { name, email, mobile , collegeName } = data

@@ -1,8 +1,6 @@
-
 const collegeModel = require("../model/CollegeModel");
 const InternModel = require("../model/InternModel");
 const { isValidFullName, isValidLink, isValidShortName } = require("../validator/validator");
-
 
 
 
@@ -35,6 +33,7 @@ return res.status(201).send({status: true, msg: "College Created",data: savedDat
 
 //****************************************************************************************/
 const collegeDetails = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
   try {
     if (Object.keys(req.query).length == 0)
       return res
