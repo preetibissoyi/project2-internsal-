@@ -8,7 +8,7 @@ const multer=require('multer')
 app.use(express.json())
 app.use(multer().any())
 // app.use(bodyParser.urlencoded({extended:true})) ;
-mongoose.connect("mongodb+srv://chanda:QYho3EZNKLny4znA@cluster0.gkrjc46.mongodb.net/group25Database",{
+mongoose.connect("mongodb+srv://preeti:miausi2001@cluster0101.9ryctxd.mongodb.net/Project2-internsala",{
    useNewUrlParser :true
 })
 .then(()=>console.log("mongoDb is connected"))
